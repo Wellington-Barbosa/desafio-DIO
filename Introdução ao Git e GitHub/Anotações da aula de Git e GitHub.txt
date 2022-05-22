@@ -1,0 +1,49 @@
+Comandos no Git - Bootcamp DIO
+
+- Mudar de pastas
+	> cd
+
+- Listar pastas 
+	> dir
+
+- Criar pastas e arquivos
+	> mkdir
+
+- Deletar pastas e arquivos
+	> del / rmdir
+	
+Criar a chave SSH e vincular no GitHub (SSH KEY)
+
+- Gerar a chave SSH no GitBash, utilizando o comando:
+	> ssh-keygen -t ed25519 -C "seu e-mail, de preferência o da conta do GitHub"
+	> teclar enter
+	> criar uma senha
+	> confirmar a senha
+	> as chaves pública e privada serão criadas no caminho informado
+	> navegar até a pasta onde estão as chaves e abrir o arquivo que contenha a chave id_ed25519.pub 
+	> copiar seu conteúdo e colar no SSH KEY do GitHub
+	
+- Inicializar o SSH Agent na máquina em que as chaves foram criadas, através do seguinte comando:
+	> eval $(ssh-agent -s)
+	> o comando irá retornar a posição do pid, que é um número assumido pelo processo do agente.
+	> em seguida passaremos ao agent a chave privada que criamos anteriormente
+	> DEVEMOS PASSAR A CHAVE PRIVADA E NÃO A PÚBLICA
+	> ssh-add id_ed25519 
+	> em seguida informamos a senha que criamos anteriormente
+	
+- Iniciando o Git e criando um Commit:
+	> git init
+	> git add
+	> git commit
+	
+- Subindo um projeto do Git para o GitHub
+	> primeiramente devemos criar o repósitório no GitHub
+	> ao fazer receberemos o link de ligação 
+	> utilizaremos o seguinte comando para apontar o endereço do nosso repositório no Git
+	> git remote add origin https://github.com/Wellington-Barbosa/livro-receitas.git
+	> "origin" é a nomenclatura padrão da comunidade para a variável que irá receber o link, para não haver necessidade de ficar repetindo o mesmo
+	> podemos consultar nossos links remotos através do comando: git remote -v
+	> se tudo estiver correto, podemos por fim empurrar as informações para o repositório do GitHub, com o seguinte comando:
+	> git push origin master
+	> pode haver necessidade de realizar a autenticação 
+	> após isso os arquivos serão enviados ao repositório online do GitHub
